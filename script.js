@@ -67,16 +67,21 @@ function populateDisplay(a){
         operator=null;
         
     }
+    else if (arrayOfOperators.includes(a)&&operator!==null&&firstNum!==null&&secondNum!=null){
+        firstNum=operate(+firstNum,+secondNum,operator);
+        secondNum=null;
+        operator=a;
+    }
     else if  (a==="="){
-        
+
     }
     
-    else if(arrayOfOperators.includes(a)){
+    else if(arrayOfOperators.includes(a)&&firstNum!==null){
         console.log(2);
         operator=a;
         
     }
-    else if (firstNum===null&&operator===null){
+    else if (firstNum===null&&operator===null&&!arrayOfOperators.includes(a)){
         firstNum=a;
         
         display.textContent=firstNum;
