@@ -22,15 +22,19 @@ let operator=null;
 function operate(a,b,operator){
     if(operator==="+"){
         display.textContent=add(a,b);
+        return add(a,b);
     }
     else if (operator==="-"){
         display.textContent=subtract(a,b);
+        return subtract(a,b);
     }
     else if(operator==="*"){
         display.textContent=multiply(a,b);
+        return multiply(a,b);
     }
     else if (operator==="/"){
         display.textContent=divide(a,b);
+        return divide(a,b);
     }
 }
 
@@ -44,21 +48,39 @@ const numbers = document.querySelectorAll(".number").forEach((index)=>{
         populateDisplay(index.textContent);
     })
 });
-const operators = document.querySelectorAll(".operators").forEach((index)=>{
-    index.addEventListener("click",populateDisplay(index.textContent));
+const operators = document.querySelectorAll(".operator").forEach((index)=>{
+    index.addEventListener("click",()=>{
+        populateDisplay(index.textContent);
+    });
 })
 
 
 
 
+
+
+
 function populateDisplay(a){
-    if(a in arrayOfOperators&&firstNum!==null){
+    if (a==="="&&operator!==null&&firstNum!==null&&secondNum!=null){
+        firstNum=operate(+firstNum,+secondNum,operator);
+        secondNum=null;
+        operator=null;
+        
+    }
+    else if  (a==="="){
+        
+    }
+    
+    else if(arrayOfOperators.includes(a)){
+        console.log(2);
         operator=a;
         
     }
-    if (firstNum===null&&operator===null){
+    else if (firstNum===null&&operator===null){
         firstNum=a;
+        
         display.textContent=firstNum;
+        console.log(3);
     }
     else if(operator===null&&firstNum!==null){
         firstNum=firstNum+a;
@@ -68,11 +90,12 @@ function populateDisplay(a){
         secondNum=a;
         display.textContent=secondNum;
     }
+   
     else if(operator!==null&&firstNum!==null&&secondNum!==null){
         secondNum=secondNum+a;
         display.textContent=secondNum;
     }
-    else if (a==="="&&operator!==null&&firstNum!==null&&secondNum!=null){
-        operate(firstNum,secondNum,operator);
-    }
+    
 }
+
+
