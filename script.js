@@ -10,6 +10,9 @@ function multiply(a,b){
     return a*b;
 }
 function divide(a,b){
+    if (b==0){
+
+    }
     return a/b;
 }
 
@@ -52,6 +55,15 @@ const operators = document.querySelectorAll(".operator").forEach((index)=>{
     index.addEventListener("click",()=>{
         populateDisplay(index.textContent);
     });
+})
+
+const clear = document.querySelector("#AC");
+clear.addEventListener("click",()=>{
+    display.textContent=0;
+    firstNum=null;
+    secondNum=null;
+    operator=null;
+    
 })
 
 
