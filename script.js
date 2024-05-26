@@ -77,7 +77,6 @@ function populateDisplay(a){
     }
     
     else if(arrayOfOperators.includes(a)&&firstNum!==null){
-        console.log(2);
         operator=a;
         
     }
@@ -85,7 +84,7 @@ function populateDisplay(a){
         firstNum=a;
         
         display.textContent=firstNum;
-        console.log(3);
+        
     }
     else if(operator===null&&firstNum!==null){
         firstNum=firstNum+a;
