@@ -57,6 +57,7 @@ const operators = document.querySelectorAll(".operator").forEach((index)=>{
     });
 })
 
+//Clear Button
 const clear = document.querySelector("#AC");
 clear.addEventListener("click",()=>{
     display.textContent=0;
@@ -65,11 +66,7 @@ clear.addEventListener("click",()=>{
     operator=null;
     
 })
-
-
-
-
-
+//Delete Button
 
 
 function populateDisplay(a){
@@ -78,6 +75,18 @@ function populateDisplay(a){
         secondNum=null;
         operator=null;
         
+    }
+    else if (a==="del"&&firstNum!==null&&secondNum===null){
+        display.textContent=display.textContent.slice(0,display.textContent.length-1);
+        firstNum=display.textContent;
+      
+        
+    }
+    else if (a==="del"&&operator!==null&&firstNum!==null&&secondNum!==null){
+        display.textContent=display.textContent.slice(0,display.textContent.length-1);
+        secondNum=display.textContent;
+        
+
     }
     else if (arrayOfOperators.includes(a)&&operator!==null&&firstNum!==null&&secondNum!=null){
         firstNum=operate(+firstNum,+secondNum,operator);
@@ -91,16 +100,18 @@ function populateDisplay(a){
     else if(arrayOfOperators.includes(a)&&firstNum!==null){
         operator=a;
         
+        
     }
     else if (firstNum===null&&operator===null&&!arrayOfOperators.includes(a)){
         firstNum=a;
-        
         display.textContent=firstNum;
+       
         
     }
     else if(operator===null&&firstNum!==null){
         firstNum=firstNum+a;
         display.textContent=firstNum;
+       
     }
     else if(operator!==null&&firstNum!==null&&secondNum===null){
         secondNum=a;
