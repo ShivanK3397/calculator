@@ -66,7 +66,8 @@ clear.addEventListener("click",()=>{
     firstNum=null;
     secondNum=null;
     operator=null;
-    
+    firstNumDecimal=false;
+    secondNumDecimal=false; 
 });
 
 
