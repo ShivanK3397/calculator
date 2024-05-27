@@ -14,6 +14,8 @@ function divide(a,b){
 }
 
 let firstNum=null;
+let firstNumDecimal = false;
+let secondNumDecimal = false;
 let secondNum=null;
 let operator=null;
 
@@ -37,6 +39,7 @@ function operate(a,b,operator){
         
         return divide(a,b);
     }
+    
 }
 
 
@@ -53,9 +56,10 @@ const operators = document.querySelectorAll(".operator").forEach((index)=>{
     index.addEventListener("click",()=>{
         populateDisplay(index.textContent);
     });
-})
+});
 
 
+    
 const clear = document.querySelector("#AC");
 clear.addEventListener("click",()=>{
     display.textContent=0;
@@ -72,12 +76,44 @@ function populateDisplay(a){
         firstNum=operate(+firstNum,+secondNum,operator);
         console.log(firstNum);
         if(firstNum===Infinity){
-            display.textContent="Error"
+            display.textContent="Error";
             firstNum = null;
+        }
+        else if(firstNum.toString().includes(".")){
+
+        }
+        else{
+            firstNumDecimal=false;
         }
         secondNum=null;
         operator=null;
+        secondNumDecimal=false;
         
+    }
+    else if (a==="."&&operator===null&&firstNumDecimal===false){
+        if(firstNum===null){
+            firstNum=a;
+            firstNumDecimal=true;
+        }
+        else{
+            firstNum=firstNum+a;
+            firstNumDecimal=true;
+        }
+
+    }
+    else if (a==="."&&operator!==null&&secondNumDecimal===false){
+        if(secondNum===null){
+            secondNum=a;
+            secondNumDecimal=true;
+        }
+        else{
+            secondNum=secondNum+a;
+            secondNumDecimal=true;
+        }
+
+    }
+    else if (a==="."){
+
     }
     else if (a==="del"&&firstNum!==null&&secondNum===null){
         if (display.textContent[0]==="-"&&display.textContent.length===2){
@@ -109,6 +145,13 @@ function populateDisplay(a){
             display.textContent="Error";
             firstNum=null;
         }
+        else if(firstNum.toString().includes(".")){
+
+        }
+        else{
+            firstNumDecimal=false;
+        }
+        secondNumDecimal=false;
         secondNum=null;
         operator=a;
     }
