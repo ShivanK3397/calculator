@@ -74,7 +74,6 @@ clear.addEventListener("click",()=>{
 function populateDisplay(a){
     if (a==="="&&operator!==null&&firstNum!==null&&secondNum!=null){
         firstNum=operate(+firstNum,+secondNum,operator);
-        console.log(firstNum);
         if(firstNum===Infinity){
             display.textContent="Error";
             firstNum = null;
@@ -140,7 +139,6 @@ function populateDisplay(a){
     }
     else if (arrayOfOperators.includes(a)&&operator!==null&&firstNum!==null&&secondNum!=null){
         firstNum=operate(+firstNum,+secondNum,operator);
-        console.log(firstNum);
         if(firstNum===Infinity){
             display.textContent="Error";
             firstNum=null;
@@ -164,9 +162,10 @@ function populateDisplay(a){
         
         
     }
-    else if (firstNum===null&&operator===null&&!arrayOfOperators.includes(a)){
+    else if (firstNum===null&&operator===null&&!arrayOfOperators.includes(a)&&a!=="del"){
         firstNum=a;
         display.textContent=firstNum;
+      
        
         
     }
