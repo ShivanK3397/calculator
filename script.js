@@ -74,7 +74,8 @@ clear.addEventListener("click",()=>{
 function populateDisplay(a){
     if (a==="="&&operator!==null&&firstNum!==null&&secondNum!=null){
         firstNum=operate(+firstNum,+secondNum,operator);
-        if(firstNum===Infinity){
+        if(firstNum===Infinity||isNaN(firstNum)){
+
             display.textContent="Error";
             firstNum = null;
         }
@@ -141,7 +142,7 @@ function populateDisplay(a){
     }
     else if (arrayOfOperators.includes(a)&&operator!==null&&firstNum!==null&&secondNum!=null){
         firstNum=operate(+firstNum,+secondNum,operator);
-        if(firstNum===Infinity){
+        if(firstNum===Infinity||isNaN(firstNum)){
             display.textContent="Error";
             firstNum=null;
         }
