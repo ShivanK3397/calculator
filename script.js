@@ -77,7 +77,28 @@ function populateDisplay(a){
         }
         secondNum=null;
         operator=null;
-        ;
+        
+    }
+    else if (a==="del"&&firstNum!==null&&secondNum===null){
+        if (display.textContent[0]==="-"&&display.textContent.length===2){
+            display.textContent=0;
+            firstNum=0;
+        }
+        else{
+        display.textContent=display.textContent.slice(0,display.textContent.length-1);
+        firstNum=display.textContent;
+        }
+        
+    }
+    else if (a==="del"&&operator!==null&&firstNum!==null&&secondNum!==null){
+        if (display.textContent[0]==="-"&&display.textContent.length===2){
+            display.textContent=0;
+            secondNum=0;
+        }
+        else{
+        display.textContent=display.textContent.slice(0,display.textContent.length-1);
+        secondNum=display.textContent;
+        }
         
 
     }
