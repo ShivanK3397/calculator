@@ -10,9 +10,6 @@ function multiply(a,b){
     return a*b;
 }
 function divide(a,b){
-    if (b==0){
-
-    }
     return a/b;
 }
 
@@ -37,6 +34,7 @@ function operate(a,b,operator){
     }
     else if (operator==="/"){
         display.textContent=divide(a,b);
+        
         return divide(a,b);
     }
 }
@@ -57,7 +55,7 @@ const operators = document.querySelectorAll(".operator").forEach((index)=>{
     });
 })
 
-//Clear Button
+
 const clear = document.querySelector("#AC");
 clear.addEventListener("click",()=>{
     display.textContent=0;
@@ -65,31 +63,31 @@ clear.addEventListener("click",()=>{
     secondNum=null;
     operator=null;
     
-})
-//Delete Button
+});
+
 
 
 function populateDisplay(a){
     if (a==="="&&operator!==null&&firstNum!==null&&secondNum!=null){
         firstNum=operate(+firstNum,+secondNum,operator);
+        console.log(firstNum);
+        if(firstNum===Infinity){
+            display.textContent="Error"
+            firstNum = null;
+        }
         secondNum=null;
         operator=null;
-        
-    }
-    else if (a==="del"&&firstNum!==null&&secondNum===null){
-        display.textContent=display.textContent.slice(0,display.textContent.length-1);
-        firstNum=display.textContent;
-      
-        
-    }
-    else if (a==="del"&&operator!==null&&firstNum!==null&&secondNum!==null){
-        display.textContent=display.textContent.slice(0,display.textContent.length-1);
-        secondNum=display.textContent;
+        ;
         
 
     }
     else if (arrayOfOperators.includes(a)&&operator!==null&&firstNum!==null&&secondNum!=null){
         firstNum=operate(+firstNum,+secondNum,operator);
+        console.log(firstNum);
+        if(firstNum===Infinity){
+            display.textContent="Error";
+            firstNum=null;
+        }
         secondNum=null;
         operator=a;
     }
