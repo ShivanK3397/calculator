@@ -120,9 +120,11 @@ function populateDisplay(a){
             firstNum=0;
         }
         else{
+            console.log("test");
         display.textContent=display.textContent.slice(0,display.textContent.length-1);
         firstNum=display.textContent;
         }
+        operator=null;
         
     }
     else if (a==="del"&&operator!==null&&firstNum!==null&&secondNum!==null){

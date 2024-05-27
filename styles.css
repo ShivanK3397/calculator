@@ -39,6 +39,7 @@ button{
     padding-top: 16px;
     padding-bottom: 16px;
     background-color:silver;
+    min-height: 70px;
    
 }
 #zero,#AC{
